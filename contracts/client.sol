@@ -56,15 +56,15 @@ contract ClientContract{
     }
     
     function getPrice() public returns (uint){
-        price;
+        return price;
     }
     
     function setPrice(uint newPrice) public {
         price = newPrice;
     }
     
-    
-    constructor ( uint _id,string  memory _firstName,string memory _lastName,string memory _planedDateTime,string memory _arrivedDateTime,uint _price) public{
+    constructor ( uint _id,string  memory _firstName,string memory _lastName,string memory _planedDateTime,
+     string memory _arrivedDateTime,uint _price) public{
        id = _id;
        firstName = _firstName;
        lastName = _lastName;
