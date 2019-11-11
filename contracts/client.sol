@@ -82,8 +82,6 @@ contract ClientContract{
       return subStringLast(strDateTime,startIndex,lastIndex);
     }
 
-
-
     function extractYear(string memory strDateTime) public returns (uint) {
       return subString(strDateTime,0,4);
     }
@@ -133,6 +131,11 @@ contract ClientContract{
         return number;
     }
    
+
+    function updatePrice(int mux) public returns (uint) {
+       price = price >> mux;
+       return price;
+   }
 
   
     

@@ -52,7 +52,7 @@ contract ClientProcess{
                monthArrivedDate, dayArrivedDate, hourArrivedDate, minutesArrivedDate, 0);
             uint diffHours = BokkyPooBahsDateTimeLibrary.diffHours(planedDateTimeStamp, arrivedDateTimeStamp);
             if(diffHours > 2){
-                dbClients[i].setPrice((dbClients[i].getPrice()*5)/10);
+                dbClients[i].updatePrice(2);
                 trashClients.push(dbClients[i]);
             }
         }
