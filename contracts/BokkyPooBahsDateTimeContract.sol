@@ -1,6 +1,6 @@
 pragma solidity >=0.4.22 <0.6.0;
 
-import "BokkyPooBahsDateTimeLibrary.sol";
+import "./BokkyPooBahsDateTimeLibrary.sol";
 
 contract BokkyPooBahsDateTimeContract {
     uint public constant SECONDS_PER_DAY = 24 * 60 * 60;
@@ -145,3 +145,4 @@ contract BokkyPooBahsDateTimeContract {
     function diffSeconds(uint fromTimestamp, uint toTimestamp) public pure returns (uint _seconds) {
         _seconds = BokkyPooBahsDateTimeLibrary.diffSeconds(fromTimestamp, toTimestamp);
     }
+}
