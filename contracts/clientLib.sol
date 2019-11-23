@@ -1,32 +1,20 @@
 pragma solidity >=0.4.22 <0.6.0;
 
-import  "./client.sol";
+import  "./Client.sol";
 
-contract ClientProcess{
+contract ClientLib{
  
-   ClientContract[] private dbClients;
+   Client[] private dbClients;
     
-   ClientContract[] private trashClients;
+   Client[] private trashClients;
     
    event LogClient(uint id, string firstName,string lastName,string expectedDate, string receivedDate, uint price);
     
    constructor() public {
-       dbClients.push(new ClientContract(1,"Jeanette","Penddreth","2019-10-14, 10:00","2019-10-14, 12:00",500));
-       dbClients.push(new ClientContract(2,"Maria","Penddreth","2019-10-14, 07:00","2019-10-14, 08:00",500));
-       dbClients.push(new ClientContract(3,"Maury","Lincoln","2019-10-11, 06:00","2019-10-14, 05:00",500));
-       dbClients.push(new ClientContract(4,"Max","Musterman","2019-09-11, 06:0","2019-09-11, 07:30",500));
-   }
-   
-   function getIrregularClient(ClientContract[] memory _dbClients) public returns (ClientContract[] memory){
-      return _dbClients; 
-   }
-   
-   function printClients(ClientContract[] memory _dbClients) public {
-       
-        for (uint i = 0; i<_dbClients.length; i++) {
-            emit LogClient(_dbClients[i].getId(), _dbClients[i].getFirstName(), _dbClients[i].getLastName()
-            , _dbClients[i].getPlanedDateTime(), _dbClients[i].getArrivedDateTime(), _dbClients[i].getPrice());
-        }
+       dbClients.push(new Client(1,"Jeanette","Penddreth","2019-10-14, 10:00","2019-10-14, 12:00",500));
+       dbClients.push(new Client(2,"Maria","Penddreth","2019-10-14, 07:00","2019-10-14, 08:00",500));
+       dbClients.push(new Client(3,"Maury","Lincoln","2019-10-11, 06:00","2019-10-14, 05:00",500));
+       dbClients.push(new Client(4,"Max","Musterman","2019-09-11, 06:0","2019-09-11, 07:30",500));
    }
    
    
@@ -56,7 +44,6 @@ contract ClientProcess{
                 trashClients.push(dbClients[i]);
             }
         }
-        printClients(trashClients);
         
     }
     

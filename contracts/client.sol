@@ -3,7 +3,7 @@ pragma solidity >=0.4.22 <0.6.0;
 import "./BokkyPooBahsDateTimeContract.sol";
 import "./BokkyPooBahsDateTimeLibrary.sol";
 
-contract ClientContract{
+contract Client{
     
     uint private  id;
     string private  firstName;
@@ -12,7 +12,7 @@ contract ClientContract{
     string private  arrivedDateTime;
     uint private  price;
     
-    function getId ()  public returns (uint)  {
+    function getId ()  public view returns (uint)  {
         return id;
     }
    
@@ -22,7 +22,7 @@ contract ClientContract{
     }
     
     
-    function getFirstName () public  returns (string memory) {
+    function getFirstName () public  view returns (string memory) {
         return firstName;
     }
     
@@ -30,7 +30,7 @@ contract ClientContract{
         firstName = newFirstName;
     }
     
-    function getLastName() public returns (string memory){
+    function getLastName() public view returns (string memory){
         return lastName;
     }
     
@@ -39,7 +39,7 @@ contract ClientContract{
     }
     
     
-    function getPlanedDateTime() public returns (string memory){
+    function getPlanedDateTime() public view returns (string memory){
         return planedDateTime;
     }
     
@@ -47,7 +47,7 @@ contract ClientContract{
         planedDateTime = _planedDateTime;
     }
     
-    function getArrivedDateTime() public returns (string memory){
+    function getArrivedDateTime() public view  returns (string memory){
         return arrivedDateTime;
     }
     
@@ -55,7 +55,7 @@ contract ClientContract{
         arrivedDateTime = _arrivedDateTime;
     }
     
-    function getPrice() public returns (uint){
+    function getPrice() public view returns (uint){
         return price;
     }
     
@@ -74,7 +74,7 @@ contract ClientContract{
     }
     
 
-    function extractValue(string memory strDateTime,uint startIndex,uint lastIndex) public returns (uint) {
+    function extractValue(string memory strDateTime,uint startIndex,uint lastIndex) public view returns (uint) {
       return subString(strDateTime,startIndex,lastIndex);
     }
 
@@ -82,29 +82,29 @@ contract ClientContract{
       return subStringLast(strDateTime,startIndex,lastIndex);
     }
 
-    function extractYear(string memory strDateTime) public returns (uint) {
+    function extractYear(string memory strDateTime) public view returns (uint) {
       return subString(strDateTime,0,4);
     }
 
-    function extractMonth(string memory strDateTime) public returns (uint) {
+    function extractMonth(string memory strDateTime) public view returns (uint) {
       return subString(strDateTime,5,7);
     }
       
-    function extractDayOfMonth(string memory strDateTime) public returns (uint) {
+    function extractDayOfMonth(string memory strDateTime) public  view returns (uint) {
       return subString(strDateTime,8,10);
     }
 
 
-    function extractHourOfDay(string memory strDateTime) public returns (uint) {
+    function extractHourOfDay(string memory strDateTime) public view returns (uint) {
       return subString(strDateTime,11,13);
     }
 
 
-    function extractMinutesOfHour(string memory strDateTime) public returns (uint) {
+    function extractMinutesOfHour(string memory strDateTime) public  view returns (uint) {
       return subStringLast(strDateTime,14,15);
     }
 
-    function subString(string memory str, uint256 startIndex, uint256 endIndex)   public returns (uint) {
+    function subString(string memory str, uint256 startIndex, uint256 endIndex)   public view  returns (uint) {
         bytes memory strBytes = bytes(str);
         bytes memory result = new bytes(endIndex-startIndex);
         for(uint i = startIndex; i < endIndex; i++) {
@@ -113,7 +113,7 @@ contract ClientContract{
         return bytesToUint(result);
     }
     
-    function subStringLast(string memory str, uint startIndex, uint endIndex)   public returns (uint) {
+    function subStringLast(string memory str, uint startIndex, uint endIndex)   public view returns (uint) {
         bytes memory strBytes = bytes(str);
         bytes memory result = new bytes(endIndex-startIndex);
         for(uint i = startIndex; i <= endIndex; i++) {
@@ -123,7 +123,7 @@ contract ClientContract{
     }
 
     
-    function bytesToUint(bytes memory b) public returns (uint256){
+    function bytesToUint(bytes memory b) public  view returns (uint256){
         uint256 number;
         for( uint i = 0;i<b.length;i++ ){
             number = number + uint(uint8(b[i]))*(2**(8*(b.length-(i+1))));
