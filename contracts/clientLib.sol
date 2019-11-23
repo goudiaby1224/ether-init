@@ -17,6 +17,17 @@ contract ClientLib{
        dbClients.push(new Client(4,"Max","Musterman","2019-09-11, 06:0","2019-09-11, 07:30",500));
    }
    
+   function getIrregularClient(Client[] memory _dbClients) public view returns (Client[] memory){
+      return _dbClients; 
+   }
+   function printClients(Client[] memory _dbClients) public {
+       
+        for (uint i = 0; i<_dbClients.length; i++) {
+            emit LogClient(_dbClients[i].getId(), _dbClients[i].getFirstName(), _dbClients[i].getLastName()
+            , _dbClients[i].getPlanedDateTime(), _dbClients[i].getArrivedDateTime(), _dbClients[i].getPrice());
+        }
+   }
+   
    
     function updatePriceAccordingDate() public {
         
@@ -44,6 +55,7 @@ contract ClientLib{
                 trashClients.push(dbClients[i]);
             }
         }
+        printClients(trashClients);
         
     }
     
