@@ -4,9 +4,9 @@ import  "./Client.sol";
 
 contract ClientLib{
  
-   Client[] private dbClients;
+   Client[] private dbClients = new Client[](4);
     
-   Client[] private trashClients;
+   Client[] private trashClients = new Client[](4);
     
    event LogClient(uint id, string firstName,string lastName,string expectedDate, string receivedDate, uint price);
     
@@ -20,11 +20,22 @@ contract ClientLib{
    function getIrregularClient(Client[] memory _dbClients) public view returns (Client[] memory){
       return _dbClients; 
    }
+   
+
+
    function printClients(Client[] memory _dbClients) public {
        
         for (uint i = 0; i<_dbClients.length; i++) {
             emit LogClient(_dbClients[i].getId(), _dbClients[i].getFirstName(), _dbClients[i].getLastName()
             , _dbClients[i].getPlanedDateTime(), _dbClients[i].getArrivedDateTime(), _dbClients[i].getPrice());
+        }
+   }
+
+   function printClients() public {
+       
+        for (uint i = 0; i<dbClients.length; i++) {
+            emit LogClient(dbClients[i].getId(), dbClients[i].getFirstName(), dbClients[i].getLastName()
+            , dbClients[i].getPlanedDateTime(), dbClients[i].getArrivedDateTime(), dbClients[i].getPrice());
         }
    }
    
