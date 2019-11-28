@@ -17,7 +17,7 @@ contract ClientLib{
        dbClients.push(new Client(4,"Max","Musterman","2019-09-11, 06:0","2019-09-11, 07:30",500));
    }
    
-   function getIrregularClient(Client[] memory _dbClients) public view returns (Client[] memory){
+   function getIrregularClient(Client[] memory _dbClients) public pure returns (Client[] memory){
       return _dbClients; 
    }
    
